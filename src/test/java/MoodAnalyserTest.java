@@ -15,10 +15,21 @@ public class MoodAnalyserTest {
         String mood = moodAnalyser.analyseMood("I am in Happy Mood");
         Assert.assertEquals("Happy", mood);
     }
-    @Test
+  mood  @Test
     public void givenNullMood_ShouldReturnHappy() {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
         String mood = moodAnalyser.analyzeMood();
         Assert.assertEquals("Happy", mood);
+    }
+    @Test
+    public void givenEmptyMood_ShouldReturnHappy() {
+        String mood = null;
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        try {
+            mood = moodAnalyser.analyzeMood();
+            Assert.assertEquals("Happy", mood);
+        } catch (MoodAnalysisException e) {
+            System.out.println(e);
+        }
     }
 }
